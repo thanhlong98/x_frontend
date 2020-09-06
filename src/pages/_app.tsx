@@ -2,7 +2,7 @@ import { ApolloProvider } from "@apollo/client";
 import { AppProps } from "next/app";
 import Router from "next/router";
 import NProgress from "nprogress";
-import { useApollo } from "../lib/apolloClient";
+import { useApollo } from "../utils/apolloClient";
 import "../styles/global.css";
 
 // handle show progress bar

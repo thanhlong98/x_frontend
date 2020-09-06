@@ -5,24 +5,14 @@ import {
   NormalizedCacheObject,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { IncomingMessage, ServerResponse } from "http";
+import { NextPageContext } from "next";
 import { useMemo } from "react";
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
-const uri: string = process.env.GRAPHQL_URI || "";
+const uri: string = "127.0.0.1:3000/graphql";
 
-export type ResolverContext = {
-  req?: IncomingMessage;
-  res?: ServerResponse;
-};
-
-function createApolloClient(context?: ResolverContext) {
-  const objToken = {
-    "access-token": "Đây là access token",
-    "refresh-token": "Đây là refresh token",
-  };
-
+function createApolloClient(context?: NextPageContext) {
   const httpLink = new HttpLink({
     uri: `http://${uri}`,
   });
@@ -31,7 +21,6 @@ function createApolloClient(context?: ResolverContext) {
     return {
       headers: {
         ...headers,
-        ...objToken,
       },
     };
   });
@@ -45,7 +34,7 @@ function createApolloClient(context?: ResolverContext) {
 
 export function initializeApollo(
   initialState: any = null,
-  context?: ResolverContext
+  context?: NextPageContext
 ) {
   const _apolloClient = apolloClient ?? createApolloClient(context);
 
