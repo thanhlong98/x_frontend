@@ -1,11 +1,12 @@
 import React from "react";
+import Navbar from "./Navbar";
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div>
-      <p>Hello World</p>
-      {children}
-    </div>
+    <>
+      <Navbar />
+      <main>{children}</main>
+    </>
   );
 };
 

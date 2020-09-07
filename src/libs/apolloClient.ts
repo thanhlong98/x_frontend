@@ -5,28 +5,40 @@ import {
   NormalizedCacheObject,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { NextPageContext } from "next";
+import { IncomingMessage, ServerResponse } from "http";
 import { useMemo } from "react";
+import { getAuthToken } from "../utils";
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
-const uri: string = "127.0.0.1:3000/graphql";
+export type ResolverContext = {
+  req?: IncomingMessage;
+  res?: ServerResponse;
+};
 
-function createApolloClient(context?: NextPageContext) {
+const isServer = () => typeof window === "undefined";
+
+const uri: string = "http://localhost:3000/graphql";
+
+function createApolloClient(context?: ResolverContext) {
+  const token = getAuthToken(context);
+
   const httpLink = new HttpLink({
-    uri: `http://${uri}`,
+    uri,
+    credentials: "include",
   });
 
   const authLink = setContext((_, { headers }) => {
     return {
       headers: {
         ...headers,
+        "access-token": token,
       },
     };
   });
 
   return new ApolloClient({
-    ssrMode: typeof window === "undefined",
+    ssrMode: isServer(),
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
   });
@@ -34,7 +46,7 @@ function createApolloClient(context?: NextPageContext) {
 
 export function initializeApollo(
   initialState: any = null,
-  context?: NextPageContext
+  context?: ResolverContext
 ) {
   const _apolloClient = apolloClient ?? createApolloClient(context);
 
@@ -48,7 +60,7 @@ export function initializeApollo(
     _apolloClient.cache.restore({ ...existingCache, ...initialState });
   }
   // For SSG and SSR always create a new Apollo Client
-  if (typeof window === "undefined") return _apolloClient;
+  if (isServer) return _apolloClient;
   // Create the Apollo Client once in the client
   if (!apolloClient) apolloClient = _apolloClient;
 

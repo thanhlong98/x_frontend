@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-const AboutPage = () => (
+const RegisterPage = () => (
   <>
-    <h1>About</h1>
-    <p>This is the about page</p>
+    <h1>Register</h1>
+    <p>This is the register page</p>
     <p>
       <Link href="/">
         <a>Go home</a>
@@ -12,5 +12,4 @@ const AboutPage = () => (
   </>
 );
 
-export default AboutPage;
-  
+export default RegisterPage;

@@ -2,8 +2,9 @@ import { ApolloProvider } from "@apollo/client";
 import { AppProps } from "next/app";
 import Router from "next/router";
 import NProgress from "nprogress";
-import { useApollo } from "../utils/apolloClient";
+import { useApollo } from "../libs/apolloClient";
 import "../styles/global.css";
+import Layout from "../components/Layout";
 
 // handle show progress bar
 NProgress.configure({ showSpinner: false });
@@ -16,7 +17,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ApolloProvider client={apolloClient}>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ApolloProvider>
   );
 }

@@ -1,5 +1,6 @@
 import { GetServerSideProps } from "next";
 import { useQuery, gql } from "@apollo/client";
+import { initializeApollo } from "../libs/apolloClient";
 
 const HELLO = gql`
   query {
@@ -12,13 +13,25 @@ const IndexPage = () => {
 
   if (loading) return <p>loading...</p>;
 
-  return <div>{data.hello}</div>;
+  return (
+    <>
+      <h1>Home page</h1>
+      <p>This is the home page</p>
+      <p>{data.hello}</p>
+    </>
+  );
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const apolloClient = initializeApollo(null, context);
+
+  await apolloClient.query({
+    query: HELLO,
+  });
+
   return {
     props: {
-      token: "1234",
+      initialApolloState: apolloClient.cache.extract(),
     },
   };
 };
