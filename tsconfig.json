@@ -17,9 +17,11 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@constants": ["src/constants"],
-      "@utils": ["src/utils"],
+      "@helpers": ["src/helpers"],
       "@graphql/*": ["src/graphql/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@layout": ["src/layouts"],
+      "@contents": ["src/contents"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

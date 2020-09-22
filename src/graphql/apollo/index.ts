@@ -7,7 +7,7 @@ import {
 import { setContext } from '@apollo/client/link/context'
 import { IncomingMessage, ServerResponse } from 'http'
 import { useMemo } from 'react'
-import { getAuthToken } from '@utils'
+import { getAuthToken } from '@helpers'
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
 

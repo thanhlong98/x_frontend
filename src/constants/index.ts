@@ -1,3 +1,5 @@
-const ACCESS_TOKEN_NAME: string = "access-token";
+import * as ROUTES from './route'
 
-export { ACCESS_TOKEN_NAME };
+const ACCESS_TOKEN_NAME: string = 'access-token'
+
+export { ROUTES, ACCESS_TOKEN_NAME }

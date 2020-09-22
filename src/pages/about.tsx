@@ -1,16 +1,19 @@
-import Link from "next/link";
+import Link from 'next/link'
 
-const AboutPage = () => (
-  <>
-    <h1>About</h1>
-    <p>This is the about page</p>
-    <p>
-      <Link href="/">
-        <a>Go home</a>
-      </Link>
-    </p>
-  </>
-);
+const AboutPage: React.FC = () => (
+  <div className="about-page">
+    <div className="container">
+      <div className="about">
+        <h1>About</h1>
+        <p>This is the about page</p>
+        <p>
+          <Link href="/">
+            <a>Go home</a>
+          </Link>
+        </p>
+      </div>
+    </div>
+  </div>
+)
 
-export default AboutPage;
-  
+export default AboutPage

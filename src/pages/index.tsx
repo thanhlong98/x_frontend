@@ -1,9 +1,10 @@
 const IndexPage = () => {
   return (
-    <>
-      <h1>Home page</h1>
-      <p>This is the home page</p>
-    </>
+    <div className="home-page">
+      <div className="container">
+        <p>Home Page</p>
+      </div>
+    </div>
   )
 }
 
