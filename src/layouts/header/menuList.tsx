@@ -16,12 +16,9 @@ const MenuList = () => {
   return (
     <div>
       {menus.map((menu, i) => (
-        <>
-          <Link href={menu.path}>
-            <a>{menu.name}</a>
-          </Link>
-          {''}
-        </>
+        <Link key={i} href={menu.path}>
+          {menu.name}
+        </Link>
       ))}
     </div>
   )

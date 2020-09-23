@@ -6,12 +6,8 @@ const LoginPage = () => (
     <h1>Login</h1>
     <p>This is the login page</p>
     <p>
-      <Link href={ROUTES.HOME_PAGE}>
-        <a>Go home</a>
-      </Link>
-      <Link href={ROUTES.REGISTER_PAGE}>
-        <a>Go Register</a>
-      </Link>
+      <Link href={ROUTES.HOME_PAGE}>Go home</Link>
+      <Link href={ROUTES.REGISTER_PAGE}>Go Register</Link>
     </p>
   </div>
 )
