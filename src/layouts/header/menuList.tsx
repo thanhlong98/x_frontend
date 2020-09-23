@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import styles from './menuList.module.scss'
 
 const menus = [
   {
@@ -14,7 +15,7 @@ const menus = [
 
 const MenuList = () => {
   return (
-    <div>
+    <div className={styles.menuContent}>
       {menus.map((menu, i) => (
         <Link key={i} href={menu.path}>
           {menu.name}
