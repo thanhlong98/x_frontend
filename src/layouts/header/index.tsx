@@ -1,9 +1,9 @@
 import MenuList from './menuList'
-import styles from './style.module.scss'
+import from './style.module.less'
 
 const Header: React.FC = () => {
   return (
-    <header id={styles.header} className="container">
+    <header  className="container">
       <MenuList />
     </header>
   )
