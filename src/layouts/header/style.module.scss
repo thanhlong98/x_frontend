@@ -1,13 +1,16 @@
 #header {
-  height: 48px;
-
   .headerContent {
     width: 100%;
+    flex-wrap: nowrap;
   }
 
   .headerEnd,
   .headerBegin {
     display: flex;
     align-items: center;
+  }
+
+  .headerMiddle {
+    padding: 0 30px;
   }
 }

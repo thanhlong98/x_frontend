@@ -3,6 +3,7 @@ import Router from 'next/router'
 import NProgress from 'nprogress'
 import Layout from '@layout'
 import '@styles/global.less'
+import '@styles/global.scss'
 
 // handle show progress bar
 NProgress.configure({ showSpinner: false })
