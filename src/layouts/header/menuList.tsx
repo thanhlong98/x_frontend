@@ -1,5 +1,6 @@
 import { Menu } from 'antd'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 const { SubMenu } = Menu
@@ -14,8 +15,12 @@ const menus = [
     path: null,
     subMenu: [
       {
-        name: 'DDD',
-        path: '/ddd'
+        name: 'Contact',
+        path: '/contact'
+      },
+      {
+        name: 'Register',
+        path: '/register'
       }
     ]
   },
@@ -26,13 +31,15 @@ const menus = [
 ]
 
 const MenuList = () => {
+  const { pathname } = useRouter()
+
   return (
-    <Menu mode="horizontal">
+    <Menu mode="horizontal" selectedKeys={[pathname]}>
       {menus.map((item, index) => {
         return item.subMenu ? (
           <SubMenu key={index} title={item.name}>
             {item.subMenu.map((subItem, index2) => (
-              <Menu.Item key={subItem.name + index2}>
+              <Menu.Item key={subItem.path}>
                 <Link href={subItem.path}>
                   <a>{subItem.name}</a>
                 </Link>
@@ -40,7 +47,7 @@ const MenuList = () => {
             ))}
           </SubMenu>
         ) : (
-          <Menu.Item key={item.name + index}>
+          <Menu.Item key={item.path}>
             <Link href={item.path}>
               <a>{item.name}</a>
             </Link>

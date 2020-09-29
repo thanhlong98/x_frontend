@@ -5,6 +5,7 @@
   display: flex;
   align-self: center;
   margin: auto;
+  min-width: @screen-xs-min;
 }
 
 .make-container(@minWidth, @breakpoint) {
@@ -18,6 +19,6 @@
 .make-container(@screen-xs-min, @screen-xs);
 .make-container(@screen-sm-min, @screen-sm);
 .make-container(@screen-md-min, @screen-md);
-.make-container(@screen-lg-min, @screen-xl);
-.make-container(@screen-xl-min, @screen-xl);
-.make-container(@screen-xxl-min, @screen-xl); // Optional
+.make-container(@screen-lg-min, @screen-lg);
+.make-container(@screen-xl-min, @screen-lg);
+.make-container(@screen-xxl-min, @screen-lg); // Optional
